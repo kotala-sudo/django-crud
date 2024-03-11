@@ -1,0 +1,26 @@
+{% extends 'website/base.html' %}
+{% block title %}Employee Record {% endblock title%}
+
+{% block content %}
+<h2>Employee Details</h2>
+  <div class="card w-75 mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ emp.first_name }} {{ emp.last_name }}</h5>
+      <hr>
+      <p class="card-text">
+        <strong>Employee ID: </strong> {{ emp.emp_id }}
+      </p>
+      <p class="card-text">
+        <strong>Email: </strong> {{ emp.email }}
+      </p>
+      <p class="card-text">
+        <strong>Employee record created on: </strong> {{ emp.created_at}}
+      </p>
+      </p>
+      <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+      <a href="{% url 'update' emp.emp_id %}" class="btn btn-secondary">Update</a>
+      <a href="{% url 'delete' emp.emp_id %}" class="btn btn-danger">Delete</a>
+    </div>
+  </div>
+{% endblock %}
+

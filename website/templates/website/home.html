@@ -1,0 +1,27 @@
+{% extends 'website/base.html' %} 
+{% block title %} Home {% endblock title %} 
+{% block content %}
+<br />
+    {% if user.is_authenticated %}
+        {% if emp_list %}
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <th>Employee ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </thead>
+                {% for emp in emp_list %}
+                    <tr>
+                        <td><a href="{% url 'employee' emp.emp_id %}">{{emp.emp_id}}</a></td>
+                        <td>{{emp.first_name}}</td>
+                        <td>{{emp.last_name}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No employee records</p>
+        {% endif %}
+    {% else %} 
+        {% include 'website/login.html' %} 
+    {% endif %} 
+{% endblock %}
